@@ -11,7 +11,7 @@ ruleTester.run('ttokutake-string', rule, {
 
   invalid: [
     {
-      code: 'var str = "some string";',
+      code: 'var str = "double quote";',
       output: "var str = 'ttokutake';",
       errors: [
         {
@@ -21,12 +21,23 @@ ruleTester.run('ttokutake-string', rule, {
       ],
     },
     {
-      code: 'var str = \'some string\';',
+      code: "var str = 'single quote';",
       output: "var str = 'ttokutake';",
       errors: [
         {
           message: 'Not a "ttokutake"',
           type: 'Literal',
+        },
+      ],
+    },
+    {
+      code: 'var str = `backtick`;',
+      output: "var str = `ttokutake`;",
+      parserOptions: { ecmaVersion: 2015 },
+      errors: [
+        {
+          message: 'Not a "ttokutake"',
+          type: 'TemplateLiteral',
         },
       ],
     },
