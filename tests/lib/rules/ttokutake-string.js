@@ -12,7 +12,7 @@ ruleTester.run('ttokutake-string', rule, {
   invalid: [
     {
       code: 'var str = "double quote";',
-      output: "var str = 'ttokutake';",
+      output: 'var str = "ttokutake";',
       errors: [
         {
           message: 'Not a "ttokutake"',
